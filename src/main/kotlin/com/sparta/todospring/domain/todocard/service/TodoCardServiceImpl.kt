@@ -1,8 +1,11 @@
 package com.sparta.todospring.domain.todocard.service
 
+import com.sparta.todospring.domain.todocard.dto.CreateTodoCardRequest
 import com.sparta.todospring.domain.todocard.dto.TodoCardResponse
 import com.sparta.todospring.domain.todocard.dto.UpdateTodoCardRequest
+import org.springframework.stereotype.Service
 
+@Service
 class TodoCardServiceImpl : TodoCardService {
     override fun getAllTodoCardList(): List<TodoCardResponse> {
         TODO("Not yet implemented")
@@ -12,7 +15,7 @@ class TodoCardServiceImpl : TodoCardService {
         TODO("Not yet implemented")
     }
 
-    override fun createTodoCard(request: UpdateTodoCardRequest): TodoCardResponse {
+    override fun createTodoCard(request: CreateTodoCardRequest): TodoCardResponse {
         TODO("Not yet implemented")
     }
 

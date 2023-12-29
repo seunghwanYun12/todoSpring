@@ -3,41 +3,56 @@ package com.sparta.todospring.domain.todocard.controller
 import com.sparta.todospring.domain.todocard.dto.CreateTodoCardRequest
 import com.sparta.todospring.domain.todocard.dto.UpdateTodoCardRequest
 import com.sparta.todospring.domain.todocard.dto.TodoCardResponse
+import com.sparta.todospring.domain.todocard.service.TodoCardService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RequestMapping("/todo-card")
 @RestController
-class TodoCardController {
+class TodoCardController(
+    private val todoCardService: TodoCardService
+) {
 
-    @PostMapping
-    fun createTodoCard(@RequestBody createTodoCardRequest: CreateTodoCardRequest): ResponseEntity<TodoCardResponse> {
-        TODO("not implemented")
-    }
     @GetMapping()
     fun getTodoCardList(): ResponseEntity<List<TodoCardResponse>> {
-        TODO("not implemented")
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(todoCardService.getAllTodoCardList())
     }
 
     @GetMapping("/{todoCardId}")
     fun getTodoCard(@PathVariable todoCardId: Long): ResponseEntity<TodoCardResponse> {
-        TODO("not implemented")
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(todoCardService.getTodoCardById(todoCardId))
+    }
+
+    @PostMapping
+    fun createTodoCard(@RequestBody createTodoCardRequest: CreateTodoCardRequest): ResponseEntity<TodoCardResponse> {
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(todoCardService.createTodoCard(createTodoCardRequest))
     }
 
     @PutMapping("/{todoCardId}")
     fun updateTodoCard(
         @PathVariable todoCardId: Long,
         @RequestBody updateTodoCardRequest: UpdateTodoCardRequest
-    ){
-        TODO("not implemented")
+    ): ResponseEntity<TodoCardResponse> {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(todoCardService.updateTodoCard(todoCardId, updateTodoCardRequest))
     }
 
     @DeleteMapping("/{todoCardId}")
     fun deleteCourse(
         @PathVariable todoCardId: Long
-    ){
-        TODO("not implemented")
+    ): ResponseEntity<Unit> {
+        todoCardService.deleteTodoCard(todoCardId)
+        return ResponseEntity
+            .status(HttpStatus.NO_CONTENT)
+            .build()
     }
-
 
 }
