@@ -1,6 +1,7 @@
 package com.sparta.todospring.domain.todocard.controller
 
-import com.sparta.todospring.domain.todocard.dto.TodoCardRequest
+import com.sparta.todospring.domain.todocard.dto.CreateTodoCardRequest
+import com.sparta.todospring.domain.todocard.dto.UpdateTodoCardRequest
 import com.sparta.todospring.domain.todocard.dto.TodoCardResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 class TodoCardController {
 
     @PostMapping
-    fun createTodoCard(@RequestBody todoCardRequest: TodoCardRequest): ResponseEntity<TodoCardResponse> {
+    fun createTodoCard(@RequestBody createTodoCardRequest: CreateTodoCardRequest): ResponseEntity<TodoCardResponse> {
         TODO("not implemented")
     }
     @GetMapping()
@@ -26,7 +27,7 @@ class TodoCardController {
     @PutMapping("/{todoCardId}")
     fun updateTodoCard(
         @PathVariable todoCardId: Long,
-        @RequestBody todoCardRequest: TodoCardRequest
+        @RequestBody updateTodoCardRequest: UpdateTodoCardRequest
     ){
         TODO("not implemented")
     }
